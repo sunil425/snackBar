@@ -1,0 +1,71 @@
+<mat-card  class="card">
+
+  
+    <form [formGroup]="employeeInfoForm">
+        <div>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Enter Your Name" formControlName="name">
+
+            </mat-form-field>
+            <div *ngIf="getEmployeeFormControls.name.touched && getEmployeeFormControls.name.errors">
+                <div *ngIf="getEmployeeFormControls.name.errors.required" >Name is required</div>
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Position</mat-label>
+                <input matInput placeholder="Enter Position" formControlName="position">
+
+            </mat-form-field>
+
+            <div *ngIf="getEmployeeFormControls.position.touched && getEmployeeFormControls.position.errors">
+                <div *ngIf="getEmployeeFormControls.position.errors.required" >Position is required</div>
+            </div>
+
+        </div>
+
+        <div>
+
+            <mat-form-field appearance="outline">
+                <mat-label>About</mat-label>
+                <input matInput placeholder="Enter About yourself" formControlName="about">
+
+            </mat-form-field>
+
+            <div *ngIf="getEmployeeFormControls.about.touched && getEmployeeFormControls.about.errors">
+                <div *ngIf="getEmployeeFormControls.about.errors.required" >About yourself is required</div>
+            </div>
+
+        </div>
+
+
+        <div>
+
+
+
+            <mat-form-field color="accent" appearance="outline">
+                <mat-label>Joining Date</mat-label>
+                <input matInput [matDatepicker]="joiningDate" formControlName="joining_date">
+                <mat-datepicker-toggle matSuffix [for]="joiningDate"></mat-datepicker-toggle>
+                <mat-datepicker #joiningDate></mat-datepicker>
+            </mat-form-field>
+
+            <div *ngIf="getEmployeeFormControls.joining_date.touched && getEmployeeFormControls.joining_date.errors">
+                <div *ngIf="getEmployeeFormControls.joining_date.errors.required" >Joining Date is required</div>
+            </div>
+
+        </div>
+
+
+        <button [disabled]="!employeeInfoForm.valid" mat-raised-button color="primary" (click)="sumbit()">SUBMIT</button>
+
+    </form>
+
+   
+  </mat-card>
